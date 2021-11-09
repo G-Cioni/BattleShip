@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-   "test": "jest --watch-all --verbose"
+    "test": "jest --watch-all --verbose"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,8 @@
     "webpack": "^5.62.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
+  },
+  "dependencies": {
+    "@jest/core": "^27.3.1"
   }
 }
