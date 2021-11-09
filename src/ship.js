@@ -8,6 +8,13 @@ const shipFactory = (size) => {
     if (number >= 0 && number <= 3) isHit.splice(number, 1, true);
   };
 
-  return { isHit, hit };
+  const isSunk = () => {
+    let sunk = false;
+    if (!isHit.includes(false)) sunk = true;
+    return sunk;
+  };
+  return { isHit, hit, isSunk };
 };
+
+// eslint-disable-next-line import/prefer-default-export
 export { shipFactory };
