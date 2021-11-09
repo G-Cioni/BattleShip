@@ -1,0 +1,34 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+   "test": "jest --watch-all --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GianlucaCioni/BattleShip.git"
+  },
+  "author": "Gianluca Cioni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GianlucaCioni/BattleShip/issues"
+  },
+  "homepage": "https://github.com/GianlucaCioni/BattleShip#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.0",
+    "css-loader": "^6.5.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "jest": "^27.3.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  }
+}
