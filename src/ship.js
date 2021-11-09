@@ -5,7 +5,7 @@ const shipFactory = (size) => {
   }
 
   const hit = (number) => {
-    if (number >= 0 && number <= 3) isHit.splice(number, 1, true);
+    if (number >= 0 && number <= size) isHit.splice(number, 1, true);
   };
 
   const isSunk = () => {
