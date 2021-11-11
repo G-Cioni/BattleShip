@@ -8,11 +8,8 @@ export const shipFactory = (shipSize) => {
     if (number >= 0 && number <= shipSize) isHit.splice(number, 1, true);
   };
 
-  const isSunk = () => {
-    let sunk = false;
-    if (!isHit.includes(false)) sunk = true;
-    return sunk;
-  };
+  const isSunk = () => !isHit.includes(false);
+
   return { isHit, hit, isSunk };
 };
 
