@@ -1,11 +1,11 @@
-export const shipFactory = (size) => {
+export const shipFactory = (shipSize) => {
   const isHit = [];
-  for (let i = 0; i < size; i += 1) {
+  for (let i = 0; i < shipSize; i += 1) {
     isHit.push(false);
   }
 
   const hit = (number) => {
-    if (number >= 0 && number <= size) isHit.splice(number, 1, true);
+    if (number >= 0 && number <= shipSize) isHit.splice(number, 1, true);
   };
 
   const isSunk = () => {
