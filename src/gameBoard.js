@@ -1,11 +1,12 @@
-export const gameBoardFactory = (size) => {
+export const gameBoardFactory = (gridSize) => {
   const grid = [];
-  for (let i = 0; i < size; i += 1) {
+  for (let i = 0; i < gridSize; i += 1) {
     grid.push([]);
-    for (let j = 0; j < size; j += 1) {
+    for (let j = 0; j < gridSize; j += 1) {
       grid[i].push(false);
     }
   }
+
   return { grid };
 };
 
