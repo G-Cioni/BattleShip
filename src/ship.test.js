@@ -12,7 +12,7 @@ test("hit() marks that position as 'hit'", () => {
   expect(ship.isHit[3]).toBe(true);
 });
 
-test('isSunk() returns true when all positions have been', () => {
+test('isSunk() returns true when all positions have been hit', () => {
   const ship = shipFactory(2);
   ship.hit(0);
   ship.hit(1);
