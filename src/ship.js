@@ -1,4 +1,4 @@
-const shipFactory = (size) => {
+export const shipFactory = (size) => {
   const isHit = [];
   for (let i = 0; i < size; i += 1) {
     isHit.push(false);
@@ -16,5 +16,4 @@ const shipFactory = (size) => {
   return { isHit, hit, isSunk };
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { shipFactory };
+export default shipFactory;
