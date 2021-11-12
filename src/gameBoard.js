@@ -10,8 +10,8 @@ export const gameBoardFactory = (gridSize) => {
   }
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
-    if (ship.direction === 'vertical' && yCoord + shipSize <= 10) {
-      let allSlotsFree = true;
+    let allSlotsFree = true;
+    if (ship.direction === 'vertical' && yCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
         allSlotsFree *= grid[yCoord + i][xCoord] === '';
       }
@@ -26,8 +26,7 @@ export const gameBoardFactory = (gridSize) => {
         }
       }
     }
-    if (ship.direction === 'horizontal' && xCoord + shipSize <= 10) {
-      let allSlotsFree = true;
+    if (ship.direction === 'horizontal' && xCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
         allSlotsFree *= grid[yCoord][xCoord + i] === '';
       }
