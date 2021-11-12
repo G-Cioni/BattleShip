@@ -1,19 +1,12 @@
 import { gameBoardFactory } from './gameBoard';
 
 test('GameBoardFactory generates correct grid size', () => {
-  const gameBoard = gameBoardFactory(10);
-  expect(gameBoard.grid).toEqual([
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', '', ''],
-  ]);
+  const size = 10;
+  const gameBoard = gameBoardFactory(size);
+  expect(gameBoard.grid[size]).toBe(undefined);
+  expect(gameBoard.grid[0][size]).toBe(undefined);
+  expect(gameBoard.grid[size - 1][0]).toBe('');
+  expect(gameBoard.grid[0][size - 1]).toBe('');
 });
 
 test('gameBoard.placeShip places ships correctly', () => {
