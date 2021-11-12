@@ -1,4 +1,4 @@
-export const shipFactory = (shipSize) => {
+export const shipFactory = (shipSize, direction, xCoord, yCoord) => {
   const isHit = [];
   for (let i = 0; i < shipSize; i += 1) {
     isHit.push(false);
@@ -10,7 +10,7 @@ export const shipFactory = (shipSize) => {
 
   const isSunk = () => !isHit.includes(false);
 
-  return { isHit, hit, isSunk };
+  return { direction, shipSize, isHit, xCoord, yCoord, hit, isSunk };
 };
 
 export default shipFactory;
