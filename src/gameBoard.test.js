@@ -15,3 +15,20 @@ test('GameBoardFactory generates correct grid size', () => {
     ['', '', '', '', '', '', '', '', '', ''],
   ]);
 });
+
+test('gameBoard.placeShip places horizontal ship correctly', () => {
+  const gameBoard = gameBoardFactory(10);
+  gameBoard.placeShip(3, 'horizontal', 4, 3);
+  expect(gameBoard.grid).toEqual([
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', 'notHit', 'notHit', 'notHit', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', '', ''],
+  ]);
+});
