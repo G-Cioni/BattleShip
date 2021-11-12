@@ -3,7 +3,7 @@ export const gameBoardFactory = (gridSize) => {
   for (let i = 0; i < gridSize; i += 1) {
     grid.push([]);
     for (let j = 0; j < gridSize; j += 1) {
-      grid[i].push(false);
+      grid[i].push('');
     }
   }
 

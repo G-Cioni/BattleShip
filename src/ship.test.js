@@ -9,7 +9,7 @@ test('isHit creates correct ship size', () => {
 test("hit() marks that position as 'hit'", () => {
   const ship = shipFactory(3);
   ship.hit(3);
-  expect(ship.isHit[3]).toBe(true);
+  expect(ship.isHit[3]).toBe('hit');
 });
 
 test('isSunk() returns true when all positions have been hit', () => {
