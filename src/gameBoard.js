@@ -11,23 +11,35 @@ export const gameBoardFactory = (gridSize) => {
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
     if (ship.direction === 'vertical' && yCoord + shipSize <= 10) {
+      let allSlotsFree = true;
       for (let i = 0; i < shipSize; i += 1) {
-        grid[yCoord + i][xCoord] = {
-          status: 'notHit',
-          id: ship.id,
-          yCoord: yCoord + i,
-          xCoord,
-        };
+        allSlotsFree *= grid[yCoord + i][xCoord] === '';
+      }
+      if (allSlotsFree) {
+        for (let i = 0; i < shipSize; i += 1) {
+          grid[yCoord + i][xCoord] = {
+            status: 'notHit',
+            id: ship.id,
+            yCoord: yCoord + i,
+            xCoord,
+          };
+        }
       }
     }
     if (ship.direction === 'horizontal' && xCoord + shipSize <= 10) {
+      let allSlotsFree = true;
       for (let i = 0; i < shipSize; i += 1) {
-        grid[yCoord][xCoord + i] = {
-          status: 'notHit',
-          id: ship.id,
-          yCoord,
-          xCoord: xCoord + i,
-        };
+        allSlotsFree *= grid[yCoord][xCoord + i] === '';
+      }
+      if (allSlotsFree) {
+        for (let i = 0; i < shipSize; i += 1) {
+          grid[yCoord][xCoord + i] = {
+            status: 'notHit',
+            id: ship.id,
+            yCoord,
+            xCoord: xCoord + i,
+          };
+        }
       }
     }
   };

@@ -32,7 +32,18 @@ test("gameBoard.placeShip doesn't place ship out of range", () => {
   const gameBoard = gameBoardFactory(10);
   gameBoard.placeShip(2, 'vertical', 9, 0);
   gameBoard.placeShip(2, 'horizontal', 0, 9);
-  console.table(gameBoard.grid);
   expect(gameBoard.grid[9][0]).toBe('');
   expect(gameBoard.grid[0][9]).toBe('');
+});
+
+test("gameBoard.placeShip doesn't allow ships to overlap", () => {
+  const gameBoard = gameBoardFactory(10);
+  gameBoard.placeShip(3, 'horizontal', 0, 0);
+  gameBoard.placeShip(3, 'vertical', 0, 0);
+  gameBoard.placeShip(3, 'vertical', 7, 0);
+  gameBoard.placeShip(3, 'horizontal', 9, 0);
+  expect(gameBoard.grid[1][0]).toBe('');
+  expect(gameBoard.grid[2][0]).toBe('');
+  expect(gameBoard.grid[9][1]).toBe('');
+  expect(gameBoard.grid[9][2]).toBe('');
 });
