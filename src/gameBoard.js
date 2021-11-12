@@ -10,7 +10,7 @@ export const gameBoardFactory = (gridSize) => {
   }
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
-    if (ship.direction === 'vertical') {
+    if (ship.direction === 'vertical' && yCoord + shipSize <= 10) {
       for (let i = 0; i < shipSize; i += 1) {
         grid[yCoord + i][xCoord] = {
           status: 'notHit',
@@ -20,7 +20,7 @@ export const gameBoardFactory = (gridSize) => {
         };
       }
     }
-    if (ship.direction === 'horizontal') {
+    if (ship.direction === 'horizontal' && xCoord + shipSize <= 10) {
       for (let i = 0; i < shipSize; i += 1) {
         grid[yCoord][xCoord + i] = {
           status: 'notHit',
