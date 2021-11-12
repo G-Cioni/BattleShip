@@ -1,6 +1,7 @@
 import { shipFactory } from './ship';
 
 export const gameBoardFactory = (gridSize) => {
+  const allShips = [];
   const grid = [];
   for (let i = 0; i < gridSize; i += 1) {
     grid.push([]);
@@ -10,6 +11,7 @@ export const gameBoardFactory = (gridSize) => {
   }
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
+    allShips.push(ship);
     let allSlotsFree = true;
     if (ship.direction === 'vertical' && yCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
