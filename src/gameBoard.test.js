@@ -1,6 +1,6 @@
 import { gameBoardFactory } from './gameBoard';
 
-test('GameBoardFactory generates correct grid size', () => {
+test('gameBoardFactory generates correct grid size', () => {
   const size = 10;
   const gameBoard = gameBoardFactory(size);
   expect(gameBoard.grid[size]).toBe(undefined);
@@ -39,4 +39,18 @@ test("gameBoard.placeShip doesn't allow ships to overlap", () => {
   expect(gameBoard.grid[2][0]).toBe('');
   expect(gameBoard.grid[9][1]).toBe('');
   expect(gameBoard.grid[9][2]).toBe('');
+});
+
+test("gameBoard.receiveAttack marks correct ship tile as 'hit'", () => {
+  const gameBoard = gameBoardFactory(10);
+  gameBoard.placeShip(3, 'horizontal', 0, 0);
+  gameBoard.receiveAttack(0, 1);
+  expect(gameBoard.allShips[0].coordinates[1].status).toBe('hit');
+});
+
+test("gameBoard.receiveAttack marks correct grid square as 'hit'", () => {
+  const gameBoard = gameBoardFactory(10);
+  gameBoard.placeShip(3, 'horizontal', 0, 0);
+  gameBoard.receiveAttack(0, 1);
+  expect(gameBoard.grid[0][1].status).toBe('hit');
 });
