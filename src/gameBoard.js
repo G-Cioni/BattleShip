@@ -57,7 +57,16 @@ export const gameBoardFactory = (gridSize) => {
     }
   };
 
-  return { grid, allShips, placeShip, receiveAttack };
+  const checkAllSunk = () => {
+    const bool = allShips.reduce((acc, ship) => {
+      // eslint-disable-next-line no-param-reassign
+      acc *= ship.isSunk();
+      return acc;
+    }, true);
+    return !!bool;
+  };
+
+  return { grid, allShips, placeShip, receiveAttack, checkAllSunk };
 };
 
 export default gameBoardFactory;

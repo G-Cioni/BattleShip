@@ -54,8 +54,18 @@ test("gameBoard.receiveAttack marks correct grid square as 'hit'", () => {
   gameBoard.receiveAttack(0, 1);
   expect(gameBoard.grid[0][1].status).toBe('hit');
 });
+
 test("gameBoard.receiveAttack marks correct square as 'missed' if no ship is present", () => {
   const gameBoard = gameBoardFactory(10);
   gameBoard.receiveAttack(0, 1);
   expect(gameBoard.grid[0][1]).toBe('missed');
+});
+
+test('checkAllSunk returns true if all ships have been sunk else returns false', () => {
+  const gameBoard = gameBoardFactory(10);
+  gameBoard.placeShip(2, 'horizontal', 0, 0);
+  gameBoard.receiveAttack(0, 0);
+  expect(gameBoard.checkAllSunk()).toBe(false);
+  gameBoard.receiveAttack(0, 1);
+  expect(gameBoard.checkAllSunk()).toBe(true);
 });
