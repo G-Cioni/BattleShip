@@ -41,7 +41,17 @@ export const gameBoardFactory = (gridSize) => {
     }
   };
 
-  return { grid, placeShip };
+  const receiveAttack = (yCoord, xCoord) => {
+    const { id } = grid[yCoord][xCoord];
+    grid[yCoord][xCoord].status = 'hit';
+    allShips.forEach((ship) => {
+      if (ship.id === id) {
+        ship.hit(yCoord, xCoord);
+      }
+    });
+  };
+
+  return { grid, allShips, placeShip, receiveAttack };
 };
 
 export default gameBoardFactory;
