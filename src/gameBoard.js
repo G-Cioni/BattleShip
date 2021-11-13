@@ -44,6 +44,8 @@ export const gameBoardFactory = (gridSize) => {
   const receiveAttack = (yCoord, xCoord) => {
     if (grid[yCoord][xCoord] === '') {
       grid[yCoord][xCoord] = 'missed';
+    } else if (grid[yCoord][xCoord] === 'missed') {
+      // todo must insert logic here
     } else {
       const { id } = grid[yCoord][xCoord];
       grid[yCoord][xCoord].status = 'hit';
