@@ -1,10 +1,7 @@
 export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
   const id = Math.random();
-  const isHit = [];
   const coordinates = [];
-  for (let i = 0; i < shipSize; i += 1) {
-    isHit.push('notHit');
-  }
+
   if (direction === 'vertical') {
     for (let i = 0; i < shipSize; i += 1) {
       coordinates.push({
@@ -45,7 +42,6 @@ export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
   return {
     direction,
     shipSize,
-    isHit,
     yCoord,
     xCoord,
     id,
