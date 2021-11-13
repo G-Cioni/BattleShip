@@ -18,3 +18,21 @@ test('isSunk() returns true when all positions have been hit', () => {
   ship.hit(1);
   expect(ship.isSunk()).toBe(true);
 });
+
+test('Correct coordinates array is created in shipFactory', () => {
+  const ship = shipFactory(3, 'horizontal', 0, 0);
+  expect(ship.coordinates).toEqual([
+    {
+      yCoord: 0,
+      xCoord: 0,
+    },
+    {
+      yCoord: 0,
+      xCoord: 1,
+    },
+    {
+      yCoord: 0,
+      xCoord: 2,
+    },
+  ]);
+});
