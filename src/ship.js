@@ -8,6 +8,7 @@ export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
   if (direction === 'vertical') {
     for (let i = 0; i < shipSize; i += 1) {
       coordinates.push({
+        status: 'notHit',
         yCoord: yCoord + i,
         xCoord,
       });
@@ -16,17 +17,30 @@ export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
   if (direction === 'horizontal') {
     for (let i = 0; i < shipSize; i += 1) {
       coordinates.push({
+        status: 'notHit',
         yCoord,
         xCoord: xCoord + i,
       });
     }
   }
 
-  const hit = (number) => {
-    if (number >= 0 && number <= shipSize) isHit.splice(number, 1, 'hit');
+  const hit = (y, x) => {
+    coordinates.forEach((coord) => {
+      if (coord.xCoord === x && coord.yCoord === y) {
+        // eslint-disable-next-line no-param-reassign
+        coord.status = 'hit';
+      }
+    });
   };
 
-  const isSunk = () => !isHit.includes('notHit');
+  const isSunk = () =>
+    coordinates.reduce((acc, cur) => {
+      if (cur.status === 'notHit') {
+        // eslint-disable-next-line no-param-reassign
+        acc *= false;
+      }
+      return acc;
+    }, true);
 
   return {
     direction,
