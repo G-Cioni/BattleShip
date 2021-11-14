@@ -66,7 +66,7 @@ export const gameBoardFactory = (gridSize) => {
     return !!bool;
   };
 
-  return { grid, allShips, placeShip, receiveAttack, checkAllSunk };
+  return { grid, gridSize, allShips, placeShip, receiveAttack, checkAllSunk };
 };
 
 export default gameBoardFactory;
