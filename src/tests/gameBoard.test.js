@@ -1,4 +1,4 @@
-import { gameBoardFactory } from './gameBoard';
+import { gameBoardFactory } from '../js/gameBoard';
 
 test('gameBoardFactory generates correct grid size', () => {
   const size = 10;
