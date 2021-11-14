@@ -1,5 +1,5 @@
 import { TestWatcher } from '@jest/core';
-import { shipFactory } from './ship';
+import { shipFactory } from '../js/ship';
 
 test('isHit creates correct ship size', () => {
   const ship = shipFactory(2, 'horizontal', 0, 0);
