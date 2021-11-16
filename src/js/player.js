@@ -9,9 +9,11 @@ const cpuPlayerFactory = () => {
   const move = (gameBoard, gridSize) => {
     let yRandom = Math.floor(Math.random() * gridSize);
     let xRandom = Math.floor(Math.random() * gridSize);
-    while (gameBoard.grid[yRandom][xRandom] !== '') {
+    let i = 0;
+    while (gameBoard.grid[yRandom][xRandom] !== '' && i <= gridSize ** 2) {
       yRandom = Math.floor(Math.random() * gridSize);
       xRandom = Math.floor(Math.random() * gridSize);
+      i += 1;
     }
     gameBoard.receiveAttack(yRandom, xRandom);
   };

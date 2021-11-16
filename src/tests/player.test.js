@@ -34,3 +34,12 @@ test('cpu never makes the same move twice', () => {
   expect(gameBoard.grid[1][0]).toBe('missed');
   expect(gameBoard.grid[1][1]).toBe('missed');
 });
+
+test("cpu move doesn't loop infinitely", () => {
+  const gridSize = 1;
+  const gameBoard = gameBoardFactory(gridSize);
+  const cpuPlayer = cpuPlayerFactory();
+  cpuPlayer.move(gameBoard, gridSize);
+  cpuPlayer.move(gameBoard, gridSize);
+  expect(gameBoard.grid[0][0]).toBe('missed');
+});
