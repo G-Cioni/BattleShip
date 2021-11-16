@@ -43,3 +43,19 @@ test("cpu move doesn't loop infinitely", () => {
   cpuPlayer.move(gameBoard, gridSize);
   expect(gameBoard.grid[0][0]).toBe('missed');
 });
+
+test('cpu always makes a move if there is a square available', () => {
+  const gridSize = 5;
+  const gameBoard = gameBoardFactory(gridSize);
+  const cpuPlayer = cpuPlayerFactory();
+  const player = playerFactory();
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      if (i !== gridSize - 1 || j !== gridSize - 1) {
+        player.move(i, j, gameBoard);
+      }
+    }
+  }
+  cpuPlayer.move(gameBoard, gridSize);
+  expect(gameBoard.grid[gridSize - 1][gridSize - 1]).toBe('missed');
+});
