@@ -7,8 +7,12 @@ const playerFactory = () => {
 
 const cpuPlayerFactory = () => {
   const move = (gameBoard, gridSize) => {
-    const yRandom = Math.floor(Math.random() * gridSize);
-    const xRandom = Math.floor(Math.random() * gridSize);
+    let yRandom = Math.floor(Math.random() * gridSize);
+    let xRandom = Math.floor(Math.random() * gridSize);
+    while (gameBoard.grid[yRandom][xRandom] !== '') {
+      yRandom = Math.floor(Math.random() * gridSize);
+      xRandom = Math.floor(Math.random() * gridSize);
+    }
     gameBoard.receiveAttack(yRandom, xRandom);
   };
   return { move };

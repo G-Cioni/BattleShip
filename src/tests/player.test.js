@@ -20,3 +20,17 @@ test('cpuPlayer.move() makes a random move', () => {
   attackReceived = !!attackReceived;
   expect(attackReceived).toBe(true);
 });
+
+test('cpu never makes the same move twice', () => {
+  const gridSize = 2;
+  const gameBoard = gameBoardFactory(gridSize);
+  const cpuPlayer = cpuPlayerFactory();
+  cpuPlayer.move(gameBoard, gridSize);
+  cpuPlayer.move(gameBoard, gridSize);
+  cpuPlayer.move(gameBoard, gridSize);
+  cpuPlayer.move(gameBoard, gridSize);
+  expect(gameBoard.grid[0][0]).toBe('missed');
+  expect(gameBoard.grid[0][1]).toBe('missed');
+  expect(gameBoard.grid[1][0]).toBe('missed');
+  expect(gameBoard.grid[1][1]).toBe('missed');
+});
