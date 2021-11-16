@@ -1,6 +1,7 @@
 export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
-  const id = Math.random();
   const coordinates = [];
+  const id =
+    Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
 
   if (direction === 'vertical') {
     for (let i = 0; i < shipSize; i += 1) {
