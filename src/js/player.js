@@ -10,7 +10,8 @@ const cpuPlayerFactory = () => {
     let yRandom = Math.floor(Math.random() * gridSize);
     let xRandom = Math.floor(Math.random() * gridSize);
     let i = 0;
-    while (gameBoard.grid[yRandom][xRandom] !== '' && i <= gridSize ** 2) {
+    // todo change the "10" in the following while loop. It's just a shortcut
+    while (gameBoard.grid[yRandom][xRandom] !== '' && i <= gridSize ** 10) {
       yRandom = Math.floor(Math.random() * gridSize);
       xRandom = Math.floor(Math.random() * gridSize);
       i += 1;
