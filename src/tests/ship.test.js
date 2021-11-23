@@ -1,11 +1,6 @@
 import { TestWatcher } from '@jest/core';
 import { shipFactory } from '../js/ship';
 
-test('isHit creates correct ship size', () => {
-  const ship = shipFactory(2, 'horizontal', 0, 0);
-  expect(ship.coordinates.length).toBe(2);
-});
-
 test("hit() marks that position as 'hit'", () => {
   const ship = shipFactory(3, 'horizontal', 0, 0);
   ship.hit(0, 1);
