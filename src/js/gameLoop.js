@@ -1,3 +1,4 @@
+import { gameBoardFactory } from './gameBoard';
 import { cpuPlayerFactory, playerFactory } from './player';
 
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
@@ -9,8 +10,15 @@ const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   return { player1, player2 };
 };
 
-const runGameLoop = (p1Type, p2Type, p1Name, p2Name) => {
-  const { player1, player2 } = createPlayers(p1Type, p2Type, p1Name, p2Name);
+const createGameBoards = (gridSize) => {
+  const p1GameBoard = gameBoardFactory(gridSize);
+  const p2GameBoard = gameBoardFactory(gridSize);
+  return { p1GameBoard, p2GameBoard };
 };
 
-export { createPlayers, runGameLoop };
+const runGameLoop = (p1Type, p2Type, p1Name, p2Name) => {
+  const { player1, player2 } = createPlayers(p1Type, p2Type, p1Name, p2Name);
+  const { p1GameBoard, p2GameBoard } = createGameBoards();
+};
+
+export { createPlayers, createGameBoards, runGameLoop };
