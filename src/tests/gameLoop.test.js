@@ -13,6 +13,8 @@ test('createPlayers returns 2 player objects', () => {
 
 test('createPlayers returns human and cpu players correctly', () => {
   const { player1, player2 } = createPlayers('human', 'cpu', '', 'Player 2');
+
+  // only human players have a name value
   expect(player1.name).toBe('');
   expect(!!player2.name).toBe(false);
 });
