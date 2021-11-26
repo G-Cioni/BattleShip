@@ -1,8 +1,8 @@
-const playerFactory = () => {
+const playerFactory = (name) => {
   const move = (yCoord, xCoord, gameBoard) => {
     gameBoard.receiveAttack(yCoord, xCoord);
   };
-  return { move };
+  return { move, name };
 };
 
 const cpuPlayerFactory = () => {
