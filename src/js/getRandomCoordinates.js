@@ -1,11 +1,14 @@
 const getRandomCoordinates = (gameBoard, gridSize) => {
   let yRandom = Math.floor(Math.random() * gridSize);
   let xRandom = Math.floor(Math.random() * gridSize);
-  while (gameBoard.grid[yRandom][xRandom] !== '') {
+  while (
+    gameBoard.grid[yRandom][xRandom] !== '' &&
+    gameBoard.grid[yRandom][xRandom].status !== 'notHit'
+  ) {
     let emptyTilesCount = 0;
     gameBoard.grid.forEach((row) =>
       row.forEach((tile) => {
-        if (tile === '') {
+        if (tile === '' || tile.status === 'notHit') {
           emptyTilesCount += 1;
         }
       }),
