@@ -20,7 +20,6 @@ const createGameBoards = (gridSize) => {
 
 const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
   let shipPlaced = false;
-  let count = 0;
 
   while (shipPlaced === false || shipPlaced === undefined) {
     const { yRandom, xRandom } = getRandomCoordinates(
@@ -38,13 +37,9 @@ const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
 
     gameBoard.allShips.forEach((ship) => {
       if (ship.id === placedShip.id) {
-        console.log(placedShip.id, ship.id);
         shipPlaced = true;
-        count += 1;
       }
     });
-    console.log(count);
-    console.log(gameBoard.allShips.length, 'allships');
   }
 };
 
@@ -56,24 +51,18 @@ const populateGameBoard = (
   smallShipQty,
   tinyShipQty,
 ) => {
-  let count = 0;
   for (let i = 0; i < bigShipQty; i += 1) {
     placeShipRandomly(gameBoard, gridSize, 4);
-    count += 4;
   }
   for (let i = 0; i < mediumShipQty; i += 1) {
     placeShipRandomly(gameBoard, gridSize, 3);
-    count += 3;
   }
   for (let i = 0; i < smallShipQty; i += 1) {
     placeShipRandomly(gameBoard, gridSize, 2);
-    count += 2;
   }
   for (let i = 0; i < tinyShipQty; i += 1) {
     placeShipRandomly(gameBoard, gridSize, 1);
-    count += 1;
   }
-  console.log(count);
 };
 
 const runGameLoop = (
