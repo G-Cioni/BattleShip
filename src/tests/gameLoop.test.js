@@ -37,10 +37,9 @@ test('createGameBoards returns 2 gameBoard objects with correct gridSize', () =>
   expect(!!p2GameBoard.grid[10]).toBe(false);
 });
 
-test('populateGameBoard places ship correctly', () => {
+test('populateGameBoard places all ships correctly', () => {
   const p1GameBoard = gameBoardFactory(10);
   populateGameBoard(p1GameBoard, 10, 1, 2, 3, 4);
-  // console.table(p1GameBoard.grid);
   const totalTilesOccupied = p1GameBoard.grid.reduce((acc, cur) => {
     cur.forEach((tile) => {
       if (tile !== '') acc += 1;
@@ -48,5 +47,5 @@ test('populateGameBoard places ship correctly', () => {
 
     return acc;
   }, 0);
-  console.log(totalTilesOccupied);
+  expect(totalTilesOccupied).toBe(20);
 });
