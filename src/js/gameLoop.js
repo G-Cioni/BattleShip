@@ -35,6 +35,7 @@ const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
       xRandom,
     );
 
+    // eslint-disable-next-line no-loop-func
     gameBoard.allShips.forEach((ship) => {
       if (ship.id === placedShip.id) {
         shipPlaced = true;
