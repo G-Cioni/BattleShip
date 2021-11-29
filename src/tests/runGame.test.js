@@ -4,7 +4,7 @@ import {
   createGameBoards,
   populateGameBoard,
   runGame,
-} from '../js/gameLoop';
+} from '../js/runGame';
 
 test('createPlayers returns 2 player objects', () => {
   const { player1, player2 } = createPlayers(
