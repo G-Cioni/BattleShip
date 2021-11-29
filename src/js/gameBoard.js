@@ -12,12 +12,12 @@ export const gameBoardFactory = (gridSize) => {
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
     allShips.push(ship);
-    let allTiles = true;
+    let requiredTilesEmpty = true;
     if (ship.direction === 'vertical' && yCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
-        allTiles *= grid[yCoord + i][xCoord] === '';
+        requiredTilesEmpty *= grid[yCoord + i][xCoord] === '';
       }
-      if (allTiles) {
+      if (requiredTilesEmpty) {
         for (let i = 0; i < shipSize; i += 1) {
           grid[yCoord + i][xCoord] = {
             status: 'notHit',
@@ -28,9 +28,9 @@ export const gameBoardFactory = (gridSize) => {
     }
     if (ship.direction === 'horizontal' && xCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
-        allTiles *= grid[yCoord][xCoord + i] === '';
+        requiredTilesEmpty *= grid[yCoord][xCoord + i] === '';
       }
-      if (allTiles) {
+      if (requiredTilesEmpty) {
         for (let i = 0; i < shipSize; i += 1) {
           grid[yCoord][xCoord + i] = {
             status: 'notHit',
@@ -39,6 +39,7 @@ export const gameBoardFactory = (gridSize) => {
         }
       }
     }
+    return ship;
   };
 
   const receiveAttack = (yCoord, xCoord) => {

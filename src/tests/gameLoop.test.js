@@ -1,4 +1,10 @@
-import { createPlayers, createGameBoards, runGameLoop } from '../js/gameLoop';
+import gameBoardFactory from '../js/gameBoard';
+import {
+  createPlayers,
+  createGameBoards,
+  populateGameBoard,
+  runGameLoop,
+} from '../js/gameLoop';
 
 test('createPlayers returns 2 player objects', () => {
   const { player1, player2 } = createPlayers(
@@ -29,4 +35,18 @@ test('createGameBoards returns 2 gameBoard objects with correct gridSize', () =>
   const { p1GameBoard, p2GameBoard } = createGameBoards(10);
   expect(!!p1GameBoard.grid[9]).toBe(true);
   expect(!!p2GameBoard.grid[10]).toBe(false);
+});
+
+test('populateGameBoard places ship correctly', () => {
+  const p1GameBoard = gameBoardFactory(10);
+  populateGameBoard(p1GameBoard, 10, 1, 2, 3, 4);
+  // console.table(p1GameBoard.grid);
+  const totalTilesOccupied = p1GameBoard.grid.reduce((acc, cur) => {
+    cur.forEach((tile) => {
+      if (tile !== '') acc += 1;
+    });
+
+    return acc;
+  }, 0);
+  console.log(totalTilesOccupied);
 });

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { gameBoardFactory } from './gameBoard';
 import { cpuPlayerFactory, playerFactory } from './player';
+import getRandomCoordinates from './getRandomCoordinates';
 
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   const player1 =
@@ -16,9 +18,93 @@ const createGameBoards = (gridSize) => {
   return { p1GameBoard, p2GameBoard };
 };
 
-const runGameLoop = (p1Type, p2Type, p1Name, p2Name) => {
-  const { player1, player2 } = createPlayers(p1Type, p2Type, p1Name, p2Name);
-  const { p1GameBoard, p2GameBoard } = createGameBoards();
+const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
+  let shipPlaced = false;
+  let count = 0;
+
+  while (shipPlaced === false || shipPlaced === undefined) {
+    const { yRandom, xRandom } = getRandomCoordinates(
+      gameBoard,
+      gridSize - shipSize,
+    );
+    const direction =
+      Math.round(Math.random()) === 1 ? 'vertical' : 'horizontal';
+    const placedShip = gameBoard.placeShip(
+      shipSize,
+      direction,
+      yRandom,
+      xRandom,
+    );
+
+    gameBoard.allShips.forEach((ship) => {
+      if (ship.id === placedShip.id) {
+        console.log(placedShip.id, ship.id);
+        shipPlaced = true;
+        count += 1;
+      }
+    });
+    console.log(count);
+    console.log(gameBoard.allShips.length, 'allships');
+  }
 };
 
-export { createPlayers, createGameBoards, runGameLoop };
+const populateGameBoard = (
+  gameBoard,
+  gridSize,
+  bigShipQty,
+  mediumShipQty,
+  smallShipQty,
+  tinyShipQty,
+) => {
+  let count = 0;
+  for (let i = 0; i < bigShipQty; i += 1) {
+    placeShipRandomly(gameBoard, gridSize, 4);
+    count += 4;
+  }
+  for (let i = 0; i < mediumShipQty; i += 1) {
+    placeShipRandomly(gameBoard, gridSize, 3);
+    count += 3;
+  }
+  for (let i = 0; i < smallShipQty; i += 1) {
+    placeShipRandomly(gameBoard, gridSize, 2);
+    count += 2;
+  }
+  for (let i = 0; i < tinyShipQty; i += 1) {
+    placeShipRandomly(gameBoard, gridSize, 1);
+    count += 1;
+  }
+  console.log(count);
+};
+
+const runGameLoop = (
+  p1Type,
+  p2Type,
+  p1Name,
+  p2Name,
+  gridSize,
+  bigShipQty,
+  mediumShipQty,
+  smallShipQty,
+  tinyShipQty,
+) => {
+  const { player1, player2 } = createPlayers(p1Type, p2Type, p1Name, p2Name);
+  const { p1GameBoard, p2GameBoard } = createGameBoards(gridSize);
+  populateGameBoard(
+    p1GameBoard,
+    gridSize,
+    bigShipQty,
+    mediumShipQty,
+    smallShipQty,
+    tinyShipQty,
+  );
+  populateGameBoard(
+    p2GameBoard,
+    gridSize,
+    bigShipQty,
+    mediumShipQty,
+    smallShipQty,
+    tinyShipQty,
+  );
+};
+
+export { createPlayers, createGameBoards, populateGameBoard, runGameLoop };
