@@ -66,7 +66,7 @@ const populateGameBoard = (
   }
 };
 
-const runGameLoop = (
+const runGame = (
   p1Type,
   p2Type,
   p1Name,
@@ -97,4 +97,4 @@ const runGameLoop = (
   );
 };
 
-export { createPlayers, createGameBoards, populateGameBoard, runGameLoop };
+export { createPlayers, createGameBoards, populateGameBoard, runGame };

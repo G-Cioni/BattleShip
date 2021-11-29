@@ -3,7 +3,7 @@ import {
   createPlayers,
   createGameBoards,
   populateGameBoard,
-  runGameLoop,
+  runGame,
 } from '../js/gameLoop';
 
 test('createPlayers returns 2 player objects', () => {
