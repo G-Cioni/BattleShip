@@ -95,6 +95,7 @@ const runGame = (
     smallShipQty,
     tinyShipQty,
   );
+  return { p1GameBoard, p2GameBoard };
 };
 
 export { createPlayers, createGameBoards, populateGameBoard, runGame };
