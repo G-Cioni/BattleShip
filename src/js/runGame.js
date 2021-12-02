@@ -24,7 +24,7 @@ const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
   while (shipPlaced === false || shipPlaced === undefined) {
     const { yRandom, xRandom } = getRandomCoordinates(
       gameBoard,
-      gridSize - shipSize,
+      gridSize + 1 - shipSize,
     );
     const direction =
       Math.round(Math.random()) === 1 ? 'vertical' : 'horizontal';
