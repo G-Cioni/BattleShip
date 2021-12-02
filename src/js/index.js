@@ -16,6 +16,6 @@ const { p1GameBoard, p2GameBoard } = runGame(
   4,
 );
 
-renderGameBoard(p1GameBoard, 'player 1');
+renderGameBoard(p1GameBoard, 'p1');
 renderTiles(p1GameBoard, 'p1');
-renderGameBoard(p2GameBoard, 'player 2');
+renderGameBoard(p2GameBoard, 'p2');
