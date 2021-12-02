@@ -1,6 +1,7 @@
 import '../reset.css';
 import '../styles.css';
-import renderGameBoard from './dom';
+// eslint-disable-next-line no-unused-vars
+import { renderTiles, renderGameBoard } from './dom';
 import { runGame } from './runGame';
 
 const { p1GameBoard, p2GameBoard } = runGame(
@@ -16,4 +17,5 @@ const { p1GameBoard, p2GameBoard } = runGame(
 );
 
 renderGameBoard(p1GameBoard, 'player 1');
+renderTiles(p1GameBoard, 'p1');
 renderGameBoard(p2GameBoard, 'player 2');
