@@ -44,19 +44,26 @@ export const gameBoardFactory = (gridSize) => {
   };
 
   const receiveAttack = (yCoord, xCoord) => {
+    let successfulAttack;
     if (grid[yCoord][xCoord] === '') {
       grid[yCoord][xCoord] = 'missed';
+      successfulAttack = true;
     } else if (grid[yCoord][xCoord] === 'missed') {
       // todo must insert logic here
-    } else {
+      successfulAttack = false;
+    } else if (grid[yCoord][xCoord].status === 'notHit') {
       const { id } = grid[yCoord][xCoord];
       grid[yCoord][xCoord].status = 'hit';
       allShips.forEach((ship) => {
         if (ship.id === id) {
           ship.hit(yCoord, xCoord);
+          successfulAttack = true;
         }
       });
+    } else if (grid[yCoord][xCoord].status === 'hit') {
+      successfulAttack = false;
     }
+    return successfulAttack;
   };
 
   const checkAllSunk = () => {

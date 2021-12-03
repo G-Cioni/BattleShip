@@ -4,9 +4,9 @@ import '../styles.css';
 import { renderNewShips, renderGameBoard } from './dom';
 import { runGame } from './runGame';
 
-const { p1GameBoard, p2GameBoard } = runGame(
+const { p1GameBoard, p2GameBoard, player1, player2 } = runGame(
   'human',
-  'cpu',
+  'human',
   'Player 1',
   'Player 2',
   10,
@@ -16,6 +16,6 @@ const { p1GameBoard, p2GameBoard } = runGame(
   4,
 );
 
-renderGameBoard(p1GameBoard, 'p1');
-renderNewShips(p1GameBoard, 'p1');
-renderGameBoard(p2GameBoard, 'p2');
+renderGameBoard(p1GameBoard, player1);
+renderNewShips(p1GameBoard, player1);
+renderGameBoard(p2GameBoard, player2);

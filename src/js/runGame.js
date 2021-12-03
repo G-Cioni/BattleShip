@@ -5,9 +5,9 @@ import getRandomCoordinates from './getRandomCoordinates';
 
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   const player1 =
-    p1Type === 'human' ? playerFactory(p1Name) : cpuPlayerFactory();
+    p1Type === 'human' ? playerFactory(p1Name, 'p1') : cpuPlayerFactory('p1');
   const player2 =
-    p2Type === 'human' ? playerFactory(p2Name) : cpuPlayerFactory();
+    p2Type === 'human' ? playerFactory(p2Name, 'p2') : cpuPlayerFactory('p2');
 
   return { player1, player2 };
 };
@@ -95,7 +95,7 @@ const runGame = (
     smallShipQty,
     tinyShipQty,
   );
-  return { p1GameBoard, p2GameBoard };
+  return { p1GameBoard, p2GameBoard, player1, player2 };
 };
 
 export { createPlayers, createGameBoards, populateGameBoard, runGame };
