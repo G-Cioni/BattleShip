@@ -1,7 +1,7 @@
 import '../reset.css';
 import '../styles.css';
 // eslint-disable-next-line no-unused-vars
-import { renderTiles, renderGameBoard } from './dom';
+import { renderNewShips, renderGameBoard } from './dom';
 import { runGame } from './runGame';
 
 const { p1GameBoard, p2GameBoard } = runGame(
@@ -17,5 +17,5 @@ const { p1GameBoard, p2GameBoard } = runGame(
 );
 
 renderGameBoard(p1GameBoard, 'p1');
-renderTiles(p1GameBoard, 'p1');
+renderNewShips(p1GameBoard, 'p1');
 renderGameBoard(p2GameBoard, 'p2');
