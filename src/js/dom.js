@@ -19,7 +19,7 @@ const renderTiles = (gameBoard, player) => {
       const tile = document.getElementById(`${player},${i},${j}`);
       if (grid[i][j].status === 'hit') {
         tile.classList.add('ship-hit');
-      } else if (grid[i][j].status === 'missed') {
+      } else if (grid[i][j] === 'missed') {
         tile.classList.add('missed');
       }
     }
