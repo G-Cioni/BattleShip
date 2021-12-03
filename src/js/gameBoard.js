@@ -1,17 +1,24 @@
 import { shipFactory } from './ship';
 
+// Creates a gameBoard object
 export const gameBoardFactory = (gridSize) => {
   const allShips = [];
   const grid = [];
+
   for (let i = 0; i < gridSize; i += 1) {
     grid.push([]);
     for (let j = 0; j < gridSize; j += 1) {
       grid[i].push('');
     }
   }
+
+  // Places ship on the gameBoard
   const placeShip = (shipSize, direction, yCoord, xCoord) => {
     const ship = shipFactory(shipSize, direction, yCoord, xCoord);
+    // todo change requiredTilesEmpty to requiredTilesAreEmpty
     let requiredTilesEmpty = true;
+
+    // Places ship correctly if its direction is vertical
     if (ship.direction === 'vertical' && yCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
         requiredTilesEmpty *= grid[yCoord + i][xCoord] === '';
@@ -26,6 +33,8 @@ export const gameBoardFactory = (gridSize) => {
         allShips.push(ship);
       }
     }
+
+    // Places ship correctly if its direction is horizontal
     if (ship.direction === 'horizontal' && xCoord + shipSize <= gridSize) {
       for (let i = 0; i < shipSize; i += 1) {
         requiredTilesEmpty *= grid[yCoord][xCoord + i] === '';
@@ -43,6 +52,7 @@ export const gameBoardFactory = (gridSize) => {
     return ship;
   };
 
+  // Receives an attack and returns whether it was successful or not as a boolean
   const receiveAttack = (yCoord, xCoord) => {
     let successfulAttack;
     if (grid[yCoord][xCoord] === '') {
@@ -66,6 +76,7 @@ export const gameBoardFactory = (gridSize) => {
     return successfulAttack;
   };
 
+  // Checks if all ships on the gameBoard have been sunk
   const checkAllSunk = () => {
     const bool = allShips.reduce((acc, ship) => {
       // eslint-disable-next-line no-param-reassign

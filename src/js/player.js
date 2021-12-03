@@ -1,5 +1,6 @@
 import getRandomCoordinates from './getRandomCoordinates';
 
+// Creates human player
 const playerFactory = (name, number) => {
   let moveCount = 0;
   const type = 'human';
@@ -12,6 +13,7 @@ const playerFactory = (name, number) => {
   return { move, moveCount, name, number, type };
 };
 
+// Creates cpu player
 const cpuPlayerFactory = (player) => {
   let moveCount = 0;
   const type = 'cpu';

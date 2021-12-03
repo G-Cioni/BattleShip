@@ -3,6 +3,7 @@ import { gameBoardFactory } from './gameBoard';
 import { cpuPlayerFactory, playerFactory } from './player';
 import getRandomCoordinates from './getRandomCoordinates';
 
+// Creates both players as human or cpu
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   const player1 =
     p1Type === 'human' ? playerFactory(p1Name, 'p1') : cpuPlayerFactory('p1');
@@ -12,15 +13,17 @@ const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   return { player1, player2 };
 };
 
+// Creates both gameBoards
 const createGameBoards = (gridSize) => {
   const p1GameBoard = gameBoardFactory(gridSize);
   const p2GameBoard = gameBoardFactory(gridSize);
   return { p1GameBoard, p2GameBoard };
 };
 
+// Place ships randomly on gameBoard
 const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
   let shipPlaced = false;
-
+  // todo Can remove shipPlaced === undefined from the next line (on next commit)
   while (shipPlaced === false || shipPlaced === undefined) {
     const { yRandom, xRandom } = getRandomCoordinates(
       gameBoard,
@@ -44,6 +47,7 @@ const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
   }
 };
 
+// Adds all of the ships to the gameBoard givin as an argument
 const populateGameBoard = (
   gameBoard,
   gridSize,
@@ -66,6 +70,7 @@ const populateGameBoard = (
   }
 };
 
+// Starts the game
 const runGame = (
   p1Type,
   p2Type,

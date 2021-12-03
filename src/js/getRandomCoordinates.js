@@ -1,10 +1,13 @@
+// Generates random coordinates for a cpu player move
 const getRandomCoordinates = (gameBoard, gridSize) => {
   let yRandom = Math.floor(Math.random() * gridSize);
   let xRandom = Math.floor(Math.random() * gridSize);
+  // Keeps generating random coordinates until they have been found and at least 1 tile is empty on the board
   while (
     gameBoard.grid[yRandom][xRandom] !== '' &&
     gameBoard.grid[yRandom][xRandom].status !== 'notHit'
   ) {
+    // Counts how many empty tiles there are
     let emptyTilesCount = 0;
     gameBoard.grid.forEach((row) =>
       row.forEach((tile) => {
@@ -13,6 +16,8 @@ const getRandomCoordinates = (gameBoard, gridSize) => {
         }
       }),
     );
+
+    // Makes sure that at least 1 empty tile is present
     if (emptyTilesCount !== 0) {
       yRandom = Math.floor(Math.random() * gridSize);
       xRandom = Math.floor(Math.random() * gridSize);

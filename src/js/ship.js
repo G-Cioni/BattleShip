@@ -1,8 +1,11 @@
+// Creates a new Ship object
 export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
-  const coordinates = [];
+  // Generates a unique id for each ship
   const id =
     Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
 
+  // Creates an array with an object for each pair of coordinates the ship occupies along with its current status
+  const coordinates = [];
   if (direction === 'vertical') {
     for (let i = 0; i < shipSize; i += 1) {
       coordinates.push({
@@ -22,6 +25,7 @@ export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
     }
   }
 
+  // Changes correct object status to "hit" inside coordinates array
   const hit = (y, x) => {
     coordinates.forEach((coord) => {
       if (coord.xCoord === x && coord.yCoord === y) {
@@ -31,6 +35,7 @@ export const shipFactory = (shipSize, direction, yCoord, xCoord) => {
     });
   };
 
+  // Checks if the ship has been sunk
   const isSunk = () =>
     coordinates.reduce((acc, cur) => {
       if (cur.status === 'notHit') {

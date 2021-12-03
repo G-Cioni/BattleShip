@@ -1,6 +1,7 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
 
+// Renders new Ships
 const renderNewShips = (gameBoard, player) => {
   const { grid } = gameBoard;
   for (let i = 0; i < grid.length; i += 1) {
@@ -12,6 +13,8 @@ const renderNewShips = (gameBoard, player) => {
     }
   }
 };
+
+// Renders all tiles expect for new ships
 const renderTiles = (gameBoard, player) => {
   const { grid } = gameBoard;
   for (let i = 0; i < grid.length; i += 1) {
@@ -26,6 +29,7 @@ const renderTiles = (gameBoard, player) => {
   }
 };
 
+// Renders gameBoard
 const renderGameBoard = (gameBoard, player) => {
   const gameBoardDiv =
     player.number === 'p1'
@@ -46,6 +50,7 @@ const renderGameBoard = (gameBoard, player) => {
         player.move(i, j, gameBoard);
         renderTiles(gameBoard, player);
         if (gameBoard.checkAllSunk()) {
+          //! Might have to implement winning logic here or in game loop. Have to evaluate what is best further on
           console.log('you win');
         }
       });
@@ -53,4 +58,5 @@ const renderGameBoard = (gameBoard, player) => {
     }
   }
 };
+
 export { renderTiles, renderNewShips, renderGameBoard };
