@@ -42,6 +42,10 @@ const renderGameBoard = (gameBoard, player) => {
       }
 
       tile.classList.add('empty-tile');
+      tile.addEventListener('click', () => {
+        gameBoard.receiveAttack(i, j);
+        renderTiles(gameBoard, player);
+      });
       gameBoardDiv.appendChild(tile);
     }
   }
