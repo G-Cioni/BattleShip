@@ -3,6 +3,7 @@ import '../styles.css';
 // eslint-disable-next-line no-unused-vars
 import { renderNewShips, renderGameBoard } from './dom';
 import { runGame } from './runGame';
+import gameLoop from './gameLoop';
 
 const { p1GameBoard, p2GameBoard, player1, player2 } = runGame(
   'human',
@@ -19,3 +20,5 @@ const { p1GameBoard, p2GameBoard, player1, player2 } = runGame(
 renderGameBoard(p1GameBoard, player1);
 renderNewShips(p1GameBoard, player1);
 renderGameBoard(p2GameBoard, player2);
+
+gameLoop(p1GameBoard, p2GameBoard, player1, player2);
