@@ -28,4 +28,8 @@ const getRandomCoordinates = (gameBoard, gridSize) => {
   return { yRandom, xRandom };
 };
 
-export default getRandomCoordinates;
+// Selects between two random variables
+const selectRandom = (variable1, variable2) =>
+  Math.round(Math.random()) === 1 ? variable1 : variable2;
+
+export { selectRandom, getRandomCoordinates };
