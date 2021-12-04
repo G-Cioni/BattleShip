@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { gameBoardFactory } from './gameBoard';
 import { cpuPlayerFactory, playerFactory } from './player';
-import getRandomCoordinates from './getRandomCoordinates';
+import getRandomCoordinates from './utils';
 
 // Creates both players as human or cpu
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {

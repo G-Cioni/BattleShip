@@ -1,4 +1,4 @@
-import getRandomCoordinates from './getRandomCoordinates';
+import getRandomCoordinates from './utils';
 
 // Creates human player
 const playerFactory = (name, number) => {
