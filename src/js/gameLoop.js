@@ -17,6 +17,20 @@ const move = (
   }
 };
 
+const moveIfPossible = (
+  gameBoard,
+  player,
+  opponentGameBoard,
+  opponent,
+  gridSize,
+  i,
+  j,
+) => {
+  if (gameBoard.grid[i][j] === '' || gameBoard.grid[i][j].status === 'notHit') {
+    move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
+  }
+};
+
 const gameLoop = () => {};
 
-export { move, gameLoop };
+export { move, moveIfPossible, gameLoop };
