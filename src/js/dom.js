@@ -1,6 +1,6 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
-
+import { move } from './gameLoop';
 // Renders new Ships
 const renderNewShips = (gameBoard, player) => {
   const { grid } = gameBoard;
@@ -30,7 +30,13 @@ const renderTiles = (gameBoard, player) => {
 };
 
 // Renders gameBoard
-const renderGameBoard = (gameBoard, player) => {
+const renderGameBoard = (
+  gameBoard,
+  player,
+  opponentGameBoard,
+  opponent,
+  gridSize,
+) => {
   const gameBoardDiv =
     player.number === 'p1'
       ? document.getElementById('game-board-p1')
@@ -47,11 +53,15 @@ const renderGameBoard = (gameBoard, player) => {
 
       tile.classList.add('empty-tile');
       tile.addEventListener('click', () => {
-        player.move(i, j, gameBoard);
+        move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
         renderTiles(gameBoard, player);
+        renderTiles(opponentGameBoard, opponent);
+
+        //! Must implement winning logic
         if (gameBoard.checkAllSunk()) {
-          //! Might have to implement winning logic here or in game loop. Have to evaluate what is best further on
           console.log('you win');
+        } else if (opponentGameBoard.checkAllSunk()) {
+          console.log('you lose');
         }
       });
       gameBoardDiv.appendChild(tile);
