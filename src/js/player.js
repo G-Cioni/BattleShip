@@ -14,7 +14,7 @@ const playerFactory = (name, number) => {
 };
 
 // Creates cpu player
-const cpuPlayerFactory = (player) => {
+const cpuPlayerFactory = (number) => {
   let moveCount = 0;
   const type = 'cpu';
   const move = (gameBoard, gridSize) => {
@@ -22,7 +22,7 @@ const cpuPlayerFactory = (player) => {
     gameBoard.receiveAttack(yRandom, xRandom);
     moveCount += 1;
   };
-  return { move, moveCount, player, type };
+  return { move, moveCount, number, type };
 };
 
 export { playerFactory, cpuPlayerFactory };
