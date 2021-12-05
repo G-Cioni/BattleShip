@@ -53,9 +53,14 @@ const renderGameBoard = (
 
       tile.classList.add('empty-tile');
       tile.addEventListener('click', () => {
-        move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
-        renderTiles(gameBoard, player);
-        renderTiles(opponentGameBoard, opponent);
+        if (
+          gameBoard.grid[i][j] === '' ||
+          gameBoard.grid[i][j].status === 'notHit'
+        ) {
+          move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
+          renderTiles(gameBoard, player);
+          renderTiles(opponentGameBoard, opponent);
+        }
 
         //! Must implement winning logic
         if (gameBoard.checkAllSunk()) {
