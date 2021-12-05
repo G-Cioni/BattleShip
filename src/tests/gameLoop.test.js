@@ -1,5 +1,5 @@
 import { runGame } from '../js/runGame';
-import gameLoop, { move as moveIfPossible } from '../js/gameLoop';
+import { moveIfPossible } from '../js/gameLoop';
 test('move function lets a human player and then makes cpu opponent move automatically', () => {
   const gridSize = 10;
   const { p1GameBoard, p2GameBoard, player1, player2 } = runGame(
@@ -17,7 +17,6 @@ test('move function lets a human player and then makes cpu opponent move automat
   const p2GameBoardHit = p2GameBoard.grid.reduce((acc, row) => {
     row.forEach((tile) => {
       if (tile === 'missed' || tile.status === 'hit') {
-        console.log(tile);
         acc = true;
       }
     });

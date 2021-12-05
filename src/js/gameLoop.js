@@ -33,4 +33,4 @@ const moveIfPossible = (
 
 const gameLoop = () => {};
 
-export { move, moveIfPossible, gameLoop };
+export { moveIfPossible, gameLoop };
