@@ -1,6 +1,6 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
-import { move } from './gameLoop';
+import move from './move';
 // Renders new Ships
 const renderNewShips = (gameBoard, player) => {
   const { grid } = gameBoard;

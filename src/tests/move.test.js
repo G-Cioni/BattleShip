@@ -1,5 +1,6 @@
 import { runGame } from '../js/runGame';
-import { move } from '../js/gameLoop';
+import move from '../js/move';
+
 test('move function lets a human player and then makes cpu opponent move automatically', () => {
   const gridSize = 10;
   const { p1GameBoard, p2GameBoard, player1, player2 } = runGame(
