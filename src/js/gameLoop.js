@@ -28,6 +28,4 @@ const move = (
   }
 };
 
-const gameLoop = () => {};
-
-export { move, gameLoop };
+export default move;
