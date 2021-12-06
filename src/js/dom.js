@@ -59,9 +59,9 @@ const renderGameBoard = (
 
         //! Must implement winning logic
         if (gameBoard.checkAllSunk()) {
-          console.log('you win');
+          alert('You Win');
         } else if (opponentGameBoard.checkAllSunk()) {
-          console.log('you lose');
+          alert('You Lose');
         }
       });
       gameBoardDiv.appendChild(tile);
