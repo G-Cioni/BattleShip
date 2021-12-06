@@ -1,5 +1,9 @@
 import { runGame } from '../js/runGame';
+<<<<<<< HEAD:src/tests/move.test.js
 import move from '../js/move';
+=======
+import move from '../js/gameLoop';
+>>>>>>> f8fbe1a805405d151055912d8dc5b1345a0f1125:src/tests/gameLoop.test.js
 
 test('move function lets a human player and then makes cpu opponent move automatically', () => {
   const gridSize = 10;
