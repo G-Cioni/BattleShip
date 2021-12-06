@@ -1,6 +1,6 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
-import { moveIfPossible } from './gameLoop';
+import { move } from './gameLoop';
 // Renders new Ships
 const renderNewShips = (gameBoard, player) => {
   const { grid } = gameBoard;
@@ -53,15 +53,7 @@ const renderGameBoard = (
 
       tile.classList.add('empty-tile');
       tile.addEventListener('click', () => {
-        moveIfPossible(
-          gameBoard,
-          player,
-          opponentGameBoard,
-          opponent,
-          gridSize,
-          i,
-          j,
-        );
+        move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
         renderTiles(gameBoard, player);
         renderTiles(opponentGameBoard, opponent);
 
