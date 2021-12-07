@@ -1,4 +1,5 @@
 import { shipFactory } from './ship';
+import { getRandomCoordinates } from './utils';
 
 // Creates a gameBoard object
 export const gameBoardFactory = (gridSize) => {
@@ -52,6 +53,26 @@ export const gameBoardFactory = (gridSize) => {
     return ship;
   };
 
+  // Place ships randomly on gameBoard
+  const placeShipRandomly = (shipSize) => {
+    let shipPlaced = false;
+    while (shipPlaced === false) {
+      const { yRandom, xRandom } = getRandomCoordinates(
+        grid,
+        gridSize + 1 - shipSize,
+      );
+      const direction =
+        Math.round(Math.random()) === 1 ? 'vertical' : 'horizontal';
+      const placedShip = placeShip(shipSize, direction, yRandom, xRandom);
+      // eslint-disable-next-line no-loop-func
+      allShips.forEach((ship) => {
+        if (ship.id === placedShip.id) {
+          shipPlaced = true;
+        }
+      });
+    }
+  };
+
   // Receives an attack and returns whether it was successful or not as a boolean
   const receiveAttack = (yCoord, xCoord) => {
     let successfulAttack;
@@ -86,7 +107,15 @@ export const gameBoardFactory = (gridSize) => {
     return !!bool;
   };
 
-  return { grid, gridSize, allShips, placeShip, receiveAttack, checkAllSunk };
+  return {
+    grid,
+    gridSize,
+    allShips,
+    placeShip,
+    placeShipRandomly,
+    receiveAttack,
+    checkAllSunk,
+  };
 };
 
 export default gameBoardFactory;

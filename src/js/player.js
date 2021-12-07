@@ -15,7 +15,7 @@ const cpuPlayerFactory = (name, number) => {
   const moveCount = 0;
   const type = 'cpu';
   const move = (gameBoard, gridSize) => {
-    const { yRandom, xRandom } = getRandomCoordinates(gameBoard, gridSize);
+    const { yRandom, xRandom } = getRandomCoordinates(gameBoard.grid, gridSize);
     gameBoard.receiveAttack(yRandom, xRandom);
   };
   return { move, moveCount, name, number, type };

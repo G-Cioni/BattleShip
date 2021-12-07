@@ -24,32 +24,6 @@ const createGameBoards = (gridSize) => {
   return { p1GameBoard, p2GameBoard };
 };
 
-// Place ships randomly on gameBoard
-const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
-  let shipPlaced = false;
-  while (shipPlaced === false) {
-    const { yRandom, xRandom } = getRandomCoordinates(
-      gameBoard,
-      gridSize + 1 - shipSize,
-    );
-    const direction =
-      Math.round(Math.random()) === 1 ? 'vertical' : 'horizontal';
-    const placedShip = gameBoard.placeShip(
-      shipSize,
-      direction,
-      yRandom,
-      xRandom,
-    );
-
-    // eslint-disable-next-line no-loop-func
-    gameBoard.allShips.forEach((ship) => {
-      if (ship.id === placedShip.id) {
-        shipPlaced = true;
-      }
-    });
-  }
-};
-
 // Adds all of the ships to the gameBoard givin as an argument
 const populateGameBoard = (
   gameBoard,
@@ -60,16 +34,16 @@ const populateGameBoard = (
   tinyShipQty,
 ) => {
   for (let i = 0; i < bigShipQty; i += 1) {
-    placeShipRandomly(gameBoard, gridSize, 4);
+    gameBoard.placeShipRandomly(4);
   }
   for (let i = 0; i < mediumShipQty; i += 1) {
-    placeShipRandomly(gameBoard, gridSize, 3);
+    gameBoard.placeShipRandomly(3);
   }
   for (let i = 0; i < smallShipQty; i += 1) {
-    placeShipRandomly(gameBoard, gridSize, 2);
+    gameBoard.placeShipRandomly(2);
   }
   for (let i = 0; i < tinyShipQty; i += 1) {
-    placeShipRandomly(gameBoard, gridSize, 1);
+    gameBoard.placeShipRandomly(1);
   }
 };
 
