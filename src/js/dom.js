@@ -36,6 +36,7 @@ const renderGameBoard = (
   player,
   opponentGameBoard,
   opponent,
+  firstPlayer,
   gridSize,
 ) => {
   const gameBoardDiv =
@@ -55,7 +56,16 @@ const renderGameBoard = (
       tile.classList.add('empty-tile');
       tile.addEventListener('click', () => {
         // Triggers move function which makes a move and if opponent is a cpu opponent moves as well
-        move(gameBoard, player, opponentGameBoard, opponent, gridSize, i, j);
+        move(
+          gameBoard,
+          player,
+          opponentGameBoard,
+          opponent,
+          firstPlayer,
+          gridSize,
+          i,
+          j,
+        );
         // Render tiles on each gameBoard with an adequate timeout
         setTimeout(() => {
           renderTiles(gameBoard, player);

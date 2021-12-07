@@ -11,14 +11,14 @@ const playerFactory = (name, number) => {
 };
 
 // Creates cpu player
-const cpuPlayerFactory = (number) => {
+const cpuPlayerFactory = (name, number) => {
   const moveCount = 0;
   const type = 'cpu';
   const move = (gameBoard, gridSize) => {
     const { yRandom, xRandom } = getRandomCoordinates(gameBoard, gridSize);
     gameBoard.receiveAttack(yRandom, xRandom);
   };
-  return { move, moveCount, number, type };
+  return { move, moveCount, name, number, type };
 };
 
 export { playerFactory, cpuPlayerFactory };

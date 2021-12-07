@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { gameBoardFactory } from './gameBoard';
 import { cpuPlayerFactory, playerFactory } from './player';
-import { getRandomCoordinates } from './utils';
+import { getRandomCoordinates, selectRandom } from './utils';
 
 // Creates both players as human or cpu
 const createPlayers = (p1Type, p2Type, p1Name, p2Name) => {
   const player1 =
-    p1Type === 'human' ? playerFactory(p1Name, 'p1') : cpuPlayerFactory('p1');
+    p1Type === 'human'
+      ? playerFactory(p1Name, 'p1')
+      : cpuPlayerFactory(p1Name, 'p1');
   const player2 =
-    p2Type === 'human' ? playerFactory(p2Name, 'p2') : cpuPlayerFactory('p2');
+    p2Type === 'human'
+      ? playerFactory(p2Name, 'p2')
+      : cpuPlayerFactory(p2Name, 'p2');
 
   return { player1, player2 };
 };
@@ -84,6 +88,8 @@ const runGame = (
 ) => {
   const { player1, player2 } = createPlayers(p1Type, p2Type, p1Name, p2Name);
   const { p1GameBoard, p2GameBoard } = createGameBoards(gridSize);
+  const firstPlayer = selectRandom(p1Name, p2Name);
+
   populateGameBoard(
     p1GameBoard,
     gridSize,
@@ -100,7 +106,7 @@ const runGame = (
     smallShipQty,
     tinyShipQty,
   );
-  return { p1GameBoard, p2GameBoard, player1, player2 };
+  return { p1GameBoard, p2GameBoard, player1, player2, firstPlayer };
 };
 
 export { createPlayers, createGameBoards, populateGameBoard, runGame };
