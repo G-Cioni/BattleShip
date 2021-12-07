@@ -69,3 +69,16 @@ test('checkAllSunk returns true if all ships have been sunk else returns false',
   gameBoard.receiveAttack(0, 1);
   expect(gameBoard.checkAllSunk()).toBe(true);
 });
+
+test('populateGameBoard places all ships correctly', () => {
+  const p1GameBoard = gameBoardFactory(10);
+  p1GameBoard.populateGameBoard(1, 2, 3, 4);
+  const totalTilesOccupied = p1GameBoard.grid.reduce((acc, cur) => {
+    cur.forEach((tile) => {
+      if (tile !== '') acc += 1;
+    });
+
+    return acc;
+  }, 0);
+  expect(totalTilesOccupied).toBe(20);
+});

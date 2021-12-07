@@ -24,29 +24,6 @@ const createGameBoards = (gridSize) => {
   return { p1GameBoard, p2GameBoard };
 };
 
-// Adds all of the ships to the gameBoard givin as an argument
-const populateGameBoard = (
-  gameBoard,
-  gridSize,
-  bigShipQty,
-  mediumShipQty,
-  smallShipQty,
-  tinyShipQty,
-) => {
-  for (let i = 0; i < bigShipQty; i += 1) {
-    gameBoard.placeShipRandomly(4);
-  }
-  for (let i = 0; i < mediumShipQty; i += 1) {
-    gameBoard.placeShipRandomly(3);
-  }
-  for (let i = 0; i < smallShipQty; i += 1) {
-    gameBoard.placeShipRandomly(2);
-  }
-  for (let i = 0; i < tinyShipQty; i += 1) {
-    gameBoard.placeShipRandomly(1);
-  }
-};
-
 // Starts the game
 const runGame = (
   p1Type,
@@ -63,17 +40,13 @@ const runGame = (
   const { p1GameBoard, p2GameBoard } = createGameBoards(gridSize);
   const firstPlayer = selectRandom(p1Name, p2Name);
 
-  populateGameBoard(
-    p1GameBoard,
-    gridSize,
+  p1GameBoard.populateGameBoard(
     bigShipQty,
     mediumShipQty,
     smallShipQty,
     tinyShipQty,
   );
-  populateGameBoard(
-    p2GameBoard,
-    gridSize,
+  p2GameBoard.populateGameBoard(
     bigShipQty,
     mediumShipQty,
     smallShipQty,
@@ -82,4 +55,4 @@ const runGame = (
   return { p1GameBoard, p2GameBoard, player1, player2, firstPlayer };
 };
 
-export { createPlayers, createGameBoards, populateGameBoard, runGame };
+export { createPlayers, createGameBoards, runGame };

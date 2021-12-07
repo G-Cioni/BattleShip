@@ -73,6 +73,27 @@ export const gameBoardFactory = (gridSize) => {
     }
   };
 
+  // Adds all of the ships to the gameBoard givin as an argument
+  const populateGameBoard = (
+    bigShipQty,
+    mediumShipQty,
+    smallShipQty,
+    tinyShipQty,
+  ) => {
+    for (let i = 0; i < bigShipQty; i += 1) {
+      placeShipRandomly(4);
+    }
+    for (let i = 0; i < mediumShipQty; i += 1) {
+      placeShipRandomly(3);
+    }
+    for (let i = 0; i < smallShipQty; i += 1) {
+      placeShipRandomly(2);
+    }
+    for (let i = 0; i < tinyShipQty; i += 1) {
+      placeShipRandomly(1);
+    }
+  };
+
   // Receives an attack and returns whether it was successful or not as a boolean
   const receiveAttack = (yCoord, xCoord) => {
     let successfulAttack;
@@ -113,6 +134,7 @@ export const gameBoardFactory = (gridSize) => {
     allShips,
     placeShip,
     placeShipRandomly,
+    populateGameBoard,
     receiveAttack,
     checkAllSunk,
   };
