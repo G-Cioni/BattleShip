@@ -69,9 +69,7 @@ const renderGameBoard = (
 
         // todo must be able to generate correct gridSize by changing css variable
         // Render tiles on each gameBoard with an adequate timeout
-        setTimeout(() => {
-          renderTiles(gameBoard, player);
-        }, 400);
+        renderTiles(gameBoard, player);
         setTimeout(() => {
           renderTiles(opponentGameBoard, opponent);
         }, 800);
