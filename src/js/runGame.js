@@ -27,8 +27,7 @@ const createGameBoards = (gridSize) => {
 // Place ships randomly on gameBoard
 const placeShipRandomly = (gameBoard, gridSize, shipSize) => {
   let shipPlaced = false;
-  // todo Can remove shipPlaced === undefined from the next line (on next commit)
-  while (shipPlaced === false || shipPlaced === undefined) {
+  while (shipPlaced === false) {
     const { yRandom, xRandom } = getRandomCoordinates(
       gameBoard,
       gridSize + 1 - shipSize,
