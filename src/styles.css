@@ -55,7 +55,6 @@ body {
 .empty-tile:hover {
   cursor: pointer;
   transform: scale(1.04);
-  background-color: var(--tile-hover-color);
 }
 
 .ship-not-hit {
