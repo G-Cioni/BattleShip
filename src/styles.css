@@ -1,7 +1,11 @@
 :root {
+  --header-color: rgb(236, 221, 0);
   --background-color: rgb(31, 31, 31);
   --grid-size: 10;
-  --tile-color: rgb(87, 87, 87);
+  --tile-color: rgb(47, 89, 128);
+  --tile-hover-color: rgb(209, 108, 41);
+  --tile-hit-color: rgb(148, 31, 31);
+  --tile-missed-color: transparent;
   --tile-size: 2.5em;
 }
 
@@ -10,7 +14,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    '. . . '
+    '. header . '
     '. game-boards .'
     ' . . .';
   background-color: var(--background-color);
@@ -18,6 +22,12 @@ body {
   width: 100vw;
 }
 
+#header {
+  grid-area: header;
+  color: var(--header-color);
+  font-size: 5em;
+  margin: auto;
+}
 #game-board-container {
   grid-area: game-boards;
   display: flex;
@@ -27,6 +37,11 @@ body {
   grid-template-columns: repeat(var(--grid-size), 1fr);
   grid-template-rows: repeat(var(--grid-size), 1fr);
   padding: 1em;
+  box-shadow: 2px 2px 10px black;
+  height: max-content;
+  width: max-content;
+  padding: 0;
+  margin: 1em;
 }
 
 .empty-tile {
@@ -34,22 +49,24 @@ body {
   width: var(--tile-size);
   background-color: var(--tile-color);
   border: 1px solid;
+  border-radius: 3px;
 }
 
 .empty-tile:hover {
-  background-color: rgb(255, 230, 0);
   cursor: pointer;
+  transform: scale(1.04);
+  background-color: var(--tile-hover-color);
 }
 
 .ship-not-hit {
-  background-color: rgb(0, 47, 255);
+  background-color: rgb(27, 150, 48);
 }
 .ship-hit {
-  background-color: rgb(167, 2, 2);
+  background-color: var(--tile-hit-color);
 }
 
 .missed {
-  background-color: rgba(255, 255, 255, 0.617);
+  background-color: var(--tile-missed-color);
 }
 
 @media (max-width: 768px) {
