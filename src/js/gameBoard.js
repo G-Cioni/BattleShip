@@ -73,6 +73,13 @@ export const gameBoardFactory = (gridSize) => {
     }
   };
 
+  // Remove all ships
+  const removeShips = () => {
+    for (let i = allShips.length; i >= 0; i -= 1) {
+      allShips.pop();
+    }
+  };
+
   // Adds all of the ships to the gameBoard givin as an argument
   const populateGameBoard = (
     bigShipQty,
@@ -134,6 +141,7 @@ export const gameBoardFactory = (gridSize) => {
     allShips,
     placeShip,
     placeShipRandomly,
+    removeShips,
     populateGameBoard,
     receiveAttack,
     checkAllSunk,

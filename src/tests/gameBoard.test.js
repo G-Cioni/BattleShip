@@ -82,3 +82,10 @@ test('populateGameBoard places all ships correctly', () => {
   }, 0);
   expect(totalTilesOccupied).toBe(20);
 });
+
+test('Remove all ships', () => {
+  const p1GameBoard = gameBoardFactory(10);
+  p1GameBoard.populateGameBoard(1, 2, 3, 4);
+  p1GameBoard.removeShips();
+  expect(p1GameBoard.allShips).toEqual([]);
+});
