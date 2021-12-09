@@ -62,6 +62,10 @@ const renderGameBoard = (
   firstPlayer,
   gridSize,
 ) => {
+  // Sets grid size css variable to gridSize
+  const root = document.documentElement;
+  root.style.setProperty('--grid-size', gridSize);
+
   const gameBoardDiv =
     player.number === 'p1'
       ? document.getElementById('game-board-p1')
@@ -96,7 +100,6 @@ const renderGameBoard = (
           j,
         );
 
-        // todo must be able to generate correct gridSize by changing css variable
         // Render tiles on each gameBoard with an adequate timeout
         renderTiles(gameBoard, player);
         setTimeout(() => {

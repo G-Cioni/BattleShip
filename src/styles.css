@@ -1,7 +1,6 @@
 :root {
   --header-color: rgb(236, 221, 0);
   --background-color: rgb(31, 31, 31);
-  --grid-size: 10;
   --tile-color: rgb(47, 89, 128);
   --tile-hover-color: rgb(209, 108, 41);
   --tile-hit-color: rgb(148, 31, 31);
