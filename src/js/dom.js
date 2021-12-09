@@ -104,14 +104,13 @@ const renderGameBoard = (
         renderTiles(gameBoard, player);
         setTimeout(() => {
           renderTiles(opponentGameBoard, opponent);
+          //! Must implement winning logic
+          if (gameBoard.checkAllSunk()) {
+            alert('You Win');
+          } else if (opponentGameBoard.checkAllSunk()) {
+            alert('You Lose');
+          }
         }, 800);
-
-        //! Must implement winning logic
-        if (gameBoard.checkAllSunk()) {
-          alert('You Win');
-        } else if (opponentGameBoard.checkAllSunk()) {
-          alert('You Lose');
-        }
       });
       gameBoardDiv.appendChild(tile);
     }
