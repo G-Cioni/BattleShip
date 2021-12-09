@@ -30,6 +30,29 @@ const renderTiles = (gameBoard, player) => {
   }
 };
 
+// Removes all classes expect for "tile" from tiles
+const resetTiles = (gameBoard, player) => {
+  const { grid } = gameBoard;
+  for (let i = 0; i < grid.length; i += 1) {
+    for (let j = 0; j < grid[i].length; j += 1) {
+      const tile = document.getElementById(`${player.number},${i},${j}`);
+      tile.classList.remove('missed');
+      tile.classList.remove('ship-not-hit');
+      tile.classList.remove('ship-hit');
+    }
+  }
+};
+
+// Resets gameBoard
+const resetGameBoard = (gameBoard, player) => {
+  gameBoard.resetGrid();
+  gameBoard.removeShips();
+  gameBoard.populateGameBoard(1, 2, 3, 4);
+  resetTiles(gameBoard, player);
+  renderTiles(gameBoard, player);
+  if (player.type === 'human') renderNewShips(gameBoard, player);
+};
+
 // Renders gameBoard
 const renderGameBoard = (
   gameBoard,
@@ -43,6 +66,12 @@ const renderGameBoard = (
     player.number === 'p1'
       ? document.getElementById('game-board-p1')
       : document.getElementById('game-board-p2');
+
+  const resetGameBtn = document.getElementById('reset');
+  resetGameBtn.addEventListener('click', () => {
+    resetGameBoard(gameBoard, player);
+  });
+
   for (let i = 0; i < gameBoard.grid.length; i += 1) {
     for (let j = 0; j < gameBoard.grid[i].length; j += 1) {
       const tile = document.createElement('div');
