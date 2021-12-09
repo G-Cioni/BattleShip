@@ -88,29 +88,31 @@ const renderGameBoard = (
 
       tile.classList.add('empty-tile');
       tile.addEventListener('click', () => {
-        // Triggers move function which makes a move and if opponent is a cpu opponent moves as well
-        move(
-          gameBoard,
-          player,
-          opponentGameBoard,
-          opponent,
-          firstPlayer,
-          gridSize,
-          i,
-          j,
-        );
+        if (!(gameBoard.checkAllSunk() || opponentGameBoard.checkAllSunk())) {
+          // Triggers move function which makes a move and if opponent is a cpu opponent moves as well
+          move(
+            gameBoard,
+            player,
+            opponentGameBoard,
+            opponent,
+            firstPlayer,
+            gridSize,
+            i,
+            j,
+          );
 
-        // Render tiles on each gameBoard with an adequate timeout
-        renderTiles(gameBoard, player);
-        setTimeout(() => {
-          renderTiles(opponentGameBoard, opponent);
+          // Render tiles on each gameBoard with an adequate timeout
+          renderTiles(gameBoard, player);
+          setTimeout(() => {
+            renderTiles(opponentGameBoard, opponent);
+          }, 800);
           //! Must implement winning logic
           if (gameBoard.checkAllSunk()) {
             alert('You Win');
           } else if (opponentGameBoard.checkAllSunk()) {
             alert('You Lose');
           }
-        }, 800);
+        }
       });
       gameBoardDiv.appendChild(tile);
     }
