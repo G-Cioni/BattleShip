@@ -89,3 +89,10 @@ test('Remove all ships', () => {
   p1GameBoard.removeShips();
   expect(p1GameBoard.allShips).toEqual([]);
 });
+
+test('Reset gameBoard.grid  works correctly', () => {
+  const p1GameBoard = gameBoardFactory(1);
+  p1GameBoard.populateGameBoard(0, 0, 0, 1);
+  p1GameBoard.resetGrid();
+  expect(p1GameBoard.grid[0][0]).toBe('');
+});

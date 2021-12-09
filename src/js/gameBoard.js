@@ -80,6 +80,15 @@ export const gameBoardFactory = (gridSize) => {
     }
   };
 
+  // Resets grid
+  const resetGrid = () => {
+    grid.forEach((row) => {
+      row.forEach((_tile, index, array) => {
+        array.splice(index, 1, '');
+      });
+    });
+  };
+
   // Adds all of the ships to the gameBoard givin as an argument
   const populateGameBoard = (
     bigShipQty,
@@ -142,6 +151,7 @@ export const gameBoardFactory = (gridSize) => {
     placeShip,
     placeShipRandomly,
     removeShips,
+    resetGrid,
     populateGameBoard,
     receiveAttack,
     checkAllSunk,
