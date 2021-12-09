@@ -105,6 +105,7 @@ const renderGameBoard = (
           renderTiles(gameBoard, player);
           setTimeout(() => {
             renderTiles(opponentGameBoard, opponent);
+<<<<<<< HEAD
             //! Must implement winning logic
             if (gameBoard.checkAllSunk()) {
               alert('You Win');
@@ -112,6 +113,15 @@ const renderGameBoard = (
               alert('You Lose');
             }
           }, 800);
+=======
+          }, 800);
+          //! Must implement winning logic
+          if (gameBoard.checkAllSunk()) {
+            alert('You Win');
+          } else if (opponentGameBoard.checkAllSunk()) {
+            alert('You Lose');
+          }
+>>>>>>> a2b6c138a712f35978f642d553c663be538a1013
         }
       });
       gameBoardDiv.appendChild(tile);
