@@ -103,8 +103,8 @@ const renderGameBoard = (
       }
 
       tile.classList.add('empty-tile');
-      tile.addEventListener('dragenter', () => {
-        dragEnter();
+      tile.addEventListener('dragenter', (e) => {
+        dragEnter(e);
       });
       tile.addEventListener('dragover', (e) => {
         dragOver(e);

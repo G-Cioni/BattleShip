@@ -7,7 +7,8 @@ const dragStart = () => {
 const dragEnd = () => {
   console.log('end');
 };
-const dragEnter = () => {
+const dragEnter = (e) => {
+  allowDrag(e);
   console.log('enter');
 };
 const dragOver = (e) => {
