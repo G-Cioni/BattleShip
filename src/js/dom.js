@@ -1,6 +1,15 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
 import move from './move';
+import {
+  allowDrag,
+  dragStart,
+  dragEnd,
+  dragEnter,
+  dragOver,
+  dragLeave,
+  dragDrop,
+} from './dragAndDrop';
 
 // Renders new Ships
 const renderNewShips = (gameBoard, player) => {
@@ -10,6 +19,13 @@ const renderNewShips = (gameBoard, player) => {
       const tile = document.getElementById(`${player.number},${i},${j}`);
       if (grid[i][j].status === 'notHit') {
         tile.classList.add('ship-not-hit');
+        tile.setAttribute('draggable', true);
+        tile.addEventListener('dragstart', () => {
+          dragStart();
+          tile.addEventListener('dragend', () => {
+            dragEnd();
+          });
+        });
       }
     }
   }
@@ -87,6 +103,18 @@ const renderGameBoard = (
       }
 
       tile.classList.add('empty-tile');
+      tile.addEventListener('dragenter', () => {
+        dragEnter();
+      });
+      tile.addEventListener('dragover', (e) => {
+        dragOver(e);
+      });
+      tile.addEventListener('dragleave', () => {
+        dragLeave();
+      });
+      tile.addEventListener('drop', () => {
+        dragDrop();
+      });
       tile.addEventListener('click', () => {
         if (!(gameBoard.checkAllSunk() || opponentGameBoard.checkAllSunk())) {
           // Triggers move function which makes a move and if opponent is a cpu opponent moves as well
