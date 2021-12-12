@@ -12,7 +12,7 @@ const playerFactory = (name, number) => {
 
 // Creates cpu player
 const cpuPlayerFactory = (name, number) => {
-  const moveCount = 0;
+  const prototype = playerFactory(name, number);
   const type = 'cpu';
   const move = (gameBoard, gridSize) => {
     // If a tile next to a tile which has been hit is free then it is added to goodMoves array
@@ -64,7 +64,7 @@ const cpuPlayerFactory = (name, number) => {
       gameBoard.receiveAttack(yRandom, xRandom);
     }
   };
-  return { move, moveCount, name, number, type };
+  return { ...prototype, move, type };
 };
 
 export { playerFactory, cpuPlayerFactory };
