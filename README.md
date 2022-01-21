@@ -1,4 +1,4 @@
-# BattleShip
+# Battle Ship
 
 Battle Ship Game with focus on learning Test Driven Development
 
@@ -22,7 +22,6 @@ From The Odin Project's [curriculum](https://www.theodinproject.com/paths/full-s
 - [Jest](https://jestjs.io/)
 - [npm](https://www.npmjs.com/)
 - [prettier](https://prettier.io/)
-- [uniqid](https://www.npmjs.com/package/uniqid/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Webpack](https://webpack.js.org/)
 
