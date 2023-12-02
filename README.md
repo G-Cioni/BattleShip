@@ -2,7 +2,7 @@
 
 Battle Ship Game with focus on learning Test Driven Development
 
-### [Live Preview Battle Ship](https://gianlucacioni.github.io/BattleShip/)
+### [Live Preview Battle Ship](https://g-cioni.github.io/BattleShip/)
 
 From The Odin Project's [curriculum](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship)
 
